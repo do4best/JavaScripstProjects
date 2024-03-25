@@ -20,19 +20,22 @@ resetButton.addEventListener('click',resetTimer)
 pauseButton.addEventListener('click',pauseTimer)
 function startTimer(){
     fuss = setInterval(updateTimer,10)
-startButton.disable = true;
+startButton.disable = false;
 }
 function stopTimer(){
-
+clearInterval(fuss)
+    addtoLapLast();
+    resetTimerData();
+startTimer().disable = false;
 }
 function resetTimer(){
 clearInterval(fuss)
     resetTimerData()
-    resetTimerData.disable=false;
+    resetTimerData().disable = false;
 }
 function pauseTimer(){
     clearInterval(fuss)
-    startButton.disable=true;
+    startButton.disable=false;
 
 }
 function updateTimer(){
@@ -50,7 +53,7 @@ function updateTimer(){
 }
 function displayTimer(){
     milliSecondLabel.textContent = padTime(millisecond);
-    secondLabel.textContent = padTime(secondLabel);
+    secondLabel.textContent = padTime(second);
     minuteLabel.textContent = padTime(minute);
 }
 function padTime(time){
@@ -61,4 +64,10 @@ function resetTimerData (){
     second=0;
     millisecond=0;
     displayTimer();
+}
+function addtoLapLast(){
+    const lapTime = `${padTime(minute)} : ${padTime(second)} : ${padTime(millisecond)}`;
+    const listItem =document.createElement('li');
+    listItem.innerHTML = `<span>Lap ${lapList.childElementCount + 1}: </span> ${lapTime}`;
+    lapList.appendChild(listItem)
 }
