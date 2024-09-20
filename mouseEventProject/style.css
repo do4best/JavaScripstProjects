@@ -1,0 +1,41 @@
+body{
+    margin:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: darkblue;
+    color: white;
+    font-family: "Helvetica", sans-serif;
+}
+.container{
+    display: flex;
+text-align: center;
+}
+.mouse-event{
+    border: solid 1px blue;
+    margin: 40px;
+    min-width: 180px;
+    min-height: 100px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+.mouse-event h3{
+    position: absolute;
+    top: -50px;
+    font-size: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-weight: 100;
+    color: lightgray;
+
+}
+@media (max-width: 500px) {
+    .container{
+        flex-direction: column;
+    }
+}
